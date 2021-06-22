@@ -7,11 +7,13 @@ import About from './pages/About';
 import Marketing from './pages/Marketing';
 import Feature from './pages/Feature';
 import Login from './pages/Login'
+import Register from './pages/Register';
 import {connect} from 'react-redux'
 import * as actions from './store/actions/auth'
 import "react-image-gallery/styles/css/image-gallery.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
+
 
 export class App extends Component {
       
@@ -28,6 +30,7 @@ componentDidMount() {
                     <Route exact path='/marketing' component={Marketing} />
                     <Route exact path='/feature' component={Feature} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/register' component={Register} />
                 </Router>
             </div>
         )
