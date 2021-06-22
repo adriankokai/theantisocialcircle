@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { subscribe } from '../../store/actions/submitApplication';
 
 export class NewsLetterForm extends Component {
     constructor(props) {
@@ -16,6 +18,16 @@ export class NewsLetterForm extends Component {
         }))
     }
 
+    handleSubmit = e => {
+        e.preventDefault()
+        if (this.state.email !== '') {
+            this.props.onSubscribe(this.state.email)
+            this.setState({
+                email: ''
+            })
+        }
+    }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit} className="center row ">
@@ -26,12 +38,13 @@ export class NewsLetterForm extends Component {
                     value={this.state.email}
                     placeholder='email'
                     onChange={this.handleChange}
+                    required={true}
                 />
                 <div className="col s12">
                     <input 
                         className=" btn waves-effect teal"
                         type="submit" 
-                        value="submit" 
+                        value={this.props.loading ? "submitting":"submit"} 
                     />
                 </div>
             </form>
@@ -39,4 +52,16 @@ export class NewsLetterForm extends Component {
     }
 }
 
-export default NewsLetterForm
+const mapStateToProps = state => {
+    return {
+        loading: state.submitApplication.loading
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubscribe: email => dispatch(subscribe(email))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsLetterForm)

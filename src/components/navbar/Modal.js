@@ -46,29 +46,40 @@ class Modal extends Component {
                     </a>
                     <a href="/" style={logoStyles} className="black-text" >THE ANTISOCIAL CIRCLE</a>
 
-                    <ul className="row">
-                        <li className="col s12">
-                            <a href="blog" className="black-text center-align">Blog</a>
-                        </li>
-                        <li className="col s12">
-                            <a href="feature" className="black-text center-align">Feature</a>
-                        </li>
-                        <li className="col s12">
-                            <a href="marketing" className="black-text center-align">Marketing</a>
-                        </li>
-                        <li className="col s12">
-                            <a href="about" className="black-text center-align">About</a>
-                        </li>
-                        <li className="col s12">
-                            <a 
-                                onClick={this.props.logout} 
-                                className="black-text center-align modal-close" 
-                            >
-                                logout 
-                            </a> 
-                        </li>
+                    {
+                        this.props.isAuthenticated ?
 
-                    </ul>
+                        <ul className="row">
+                            <li className="col s12">
+                                <a href="blog" className="black-text center-align">Blog</a>
+                            </li>
+                            <li className="col s12">
+                                <a href="feature" className="black-text center-align">Feature</a>
+                            </li>
+                            <li className="col s12">
+                                <a href="marketing" className="black-text center-align">Marketing</a>
+                            </li>
+                            <li className="col s12">
+                                <a href="about" className="black-text center-align">About</a>
+                            </li>
+                            <li className="col s12">
+                                <a 
+                                    onClick={this.props.logout} 
+                                    className="black-text center-align modal-close" 
+                                >
+                                    logout 
+                                </a> 
+                            </li>
+
+                        </ul>
+                    
+                        :
+
+                        <ul className="row">
+                            <li className="col s12"><a href='login' className="black-text center-align">login</a> </li>
+                            <li className="col s12"><a href='register' className="black-text center-align">register</a> </li>
+                        </ul>                        
+                    }
                 </div>
                 <div class="modal-footer">
                    

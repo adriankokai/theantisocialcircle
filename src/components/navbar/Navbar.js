@@ -19,13 +19,22 @@ export class Navbar extends Component {
         return (
             <div>
                 <div className="hide-on-med-and-down">
-                    <Large logout={this.logout} />
+                    <Large 
+                        logout={this.logout} 
+                        isAuthenticated={this.props.isAuthenticated}
+                    />
                 </div>
                 <div className="hide-on-small-only hide-on-large-only row green darken-4">
-                    <Medium logout={this.logout} />
+                    <Medium 
+                        logout={this.logout} 
+                        isAuthenticated={this.props.isAuthenticated}
+                    />
                 </div>
                 <div className="hide-on-med-and-up ">
-                    <Small logout={this.logout} />
+                    <Small 
+                        logout={this.logout} 
+                        isAuthenticated={this.props.isAuthenticated}
+                    />
                 </div>
             </div>
         )
@@ -34,7 +43,7 @@ export class Navbar extends Component {
 
 const mapStateToProps = state => {
     return {
-      isAuthenticated: state.auth.token !== null,
+      isAuthenticated: state.auth.token !== null && (state.auth.token !== undefined),
       error: state.auth.error,
       loading: state.auth.loading
     }

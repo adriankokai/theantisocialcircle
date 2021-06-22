@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import Form from '../components/login/Form';
 import Home from './Home';
 
 export class Login extends Component {
     render() {
         if (this.props.isAuthenticated){
-            return <Home />
+            return <Redirect to="/" />
         }
         else return (
             <div>
