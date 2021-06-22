@@ -12,7 +12,7 @@ export class Small extends Component {
                                 <span style={logoStyles}>THE ANTISOCIAL CIRCLE</span> 
                             </a></li>
                             <li className="col s2">
-                                <Modal/>
+                                <Modal logout={this.props.logout} />
                                 <a 
                                     href="#" 
                                     className="black-text right modal-trigger" 

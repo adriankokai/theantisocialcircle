@@ -13,6 +13,19 @@ export class Large extends Component {
                             <li><a href="marketing" className="black-text">Marketing</a></li>
                             <li><a href="about" className="black-text">About</a></li>
                         </ul>
+                        <ul id="nav-mobile" className="right">
+                            <li><a onClick={this.props.logout} className="btn waves-effect" >
+                                {
+                                    this.props.loading ?
+
+                                    "loadin..."
+
+                                    :
+
+                                    "logout"
+                                }
+                            </a> </li>
+                        </ul>
                     </div>
                 </nav>
             </div>

@@ -59,6 +59,14 @@ class Modal extends Component {
                         <li className="col s12">
                             <a href="about" className="black-text center-align">About</a>
                         </li>
+                        <li className="col s12">
+                            <a 
+                                onClick={this.props.logout} 
+                                className="black-text center-align modal-close" 
+                            >
+                                logout 
+                            </a> 
+                        </li>
 
                     </ul>
                 </div>

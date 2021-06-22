@@ -2,23 +2,48 @@ import React, { Component } from 'react'
 import Large from './Large';
 import Medium from './Medium';
 import Small from './Small';
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions/auth'
 
 export class Navbar extends Component {
+    constructor(props) {
+        super(props);
+
+        this.logout = this.logout.bind(this)
+    }
+
+    logout = () => {
+        this.props.onLogout()
+    }
     render() {
         return (
             <div>
                 <div className="hide-on-med-and-down">
-                    <Large />
+                    <Large logout={this.logout} />
                 </div>
                 <div className="hide-on-small-only hide-on-large-only row green darken-4">
-                    <Medium />
+                    <Medium logout={this.logout} />
                 </div>
                 <div className="hide-on-med-and-up ">
-                    <Small />
+                    <Small logout={this.logout} />
                 </div>
             </div>
         )
     }
 }
 
-export default Navbar
+const mapStateToProps = state => {
+    return {
+      isAuthenticated: state.auth.token !== null,
+      error: state.auth.error,
+      loading: state.auth.loading
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(actions.logout())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
